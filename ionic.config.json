@@ -1,0 +1,7 @@
+{
+  "name": "breek",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
