@@ -38,6 +38,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'maps',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../maps/maps.module').then(m => m.MapsPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
