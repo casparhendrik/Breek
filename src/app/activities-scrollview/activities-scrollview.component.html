@@ -1,0 +1,26 @@
+<ion-row>
+  <ion-row><h6>Activiteiten voor vandaag</h6></ion-row>
+  
+  <ion-row style="width: 100%">
+    <div style="width: 100%">
+      <ion-button id="timeBtnOne" (click)="timeBtnPressed($event)" class="timeBtn isSelected">12:00 uur</ion-button>
+      <ion-button id="timeBtnTwo" (click)="timeBtnPressed($event)" class="timeBtn">12:30 uur</ion-button>
+      <ion-button id="timeBtnThree" (click)="timeBtnPressed($event)" class="timeBtn">13:00 uur</ion-button>
+      <ion-button id="others" (click)="timeBtnPressed($event)" class="timeBtn">Overig</ion-button>
+    </div>
+  </ion-row>
+  <ion-row style="width: 100%;">
+    <ion-card class="activityCard" *ngFor="let activity of activities | async">
+        <ul style="padding-left: 5%;">
+          <p style="margin-bottom: 5%; margin-top: 5%;">Rust</p>
+          <p style="margin-top: 5%;">YOGA</p>
+          <p style="margin-bottom: 5%;">12:30 uur - 20 min</p>
+          <p style="margin-top: 5%; margin-bottom: 5%;">lokaal C.302</p>
+        </ul>
+    </ion-card>
+  </ion-row>
+
+
+
+
+</ion-row>

@@ -1,0 +1,46 @@
+.mysteryBox {
+    background-color: #2178A5;
+    color: white;
+}
+
+.mysteryActTextBox {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.dateCard {
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    width: 25%;
+    margin-top: 10%;
+    margin-left: 5px;
+    margin-bottom: 0px;
+    margin-right: 5px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.dateCardText {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.joinBtn {
+    --background:#32157C;
+    width: 100%;
+    margin-right: 11%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    --border-radius: 10%;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+p {
+    font-size: 12px;
+}

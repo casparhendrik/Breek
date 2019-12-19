@@ -1,38 +1,47 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title slot="secondary">
-      Activiteiten
+    <ion-title>
+      VANDAAG
     </ion-title>
   </ion-toolbar>
+  <ion-row class="weekView">
+    <ion-button class="weekCalBtn arrow">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    <div class="dayNumbers">
+      <ion-button class="weekCalBtn selectedWeekBtn">1</ion-button>
+      <ion-button class="weekCalBtn">2</ion-button>
+      <ion-button class="weekCalBtn">3</ion-button>
+      <ion-button class="weekCalBtn">4</ion-button>
+      <ion-button class="weekCalBtn">5</ion-button>
+    </div>
+    <ion-button class="weekCalBtn arrow">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
+  </ion-row>
+  <ion-row class="ion-justify-content-around days">
+    <div>ma</div>
+    <div>di</div>
+    <div>wo</div>
+    <div>do</div>
+    <div>vr</div>
+  </ion-row>
 </ion-header>
 
 <ion-content>
-  <ion-row>
-    <ion-col class="ion-no-margin" size="8">
-    <ion-searchbar></ion-searchbar>
-  </ion-col>
-  <ion-col class="ion-no-margin">
-    <ion-button expand="block" shape="round" (click)="navCreateActivity()">Activiteit</ion-button>
-  </ion-col>
-</ion-row>
-    <ion-card *ngFor="let activity of activities | async">
-      <ion-item color="primary">
-        <div>
-        <h2>{{ activity.name }}</h2>
-        <p>{{ activity.startDate }}</p>
+  <div class="currentActivityRow">
+    <ion-row>
+      <div class="textBox">
+        <h6 style="text-align: center; padding-left: 5%; padding-right: 6%;">MIJN GEPLANDE PAUZE ACTIVITEIT</h6>
       </div>
-      </ion-item>
-      <ion-card-content>
-        <p>{{ activity.description }}</p>
-      </ion-card-content>
-      <ion-row>
-          <ion-button color="primary">
-          <ion-icon name="person"> </ion-icon>
-          <div>{{ activity.participants.length }}</div>
-        </ion-button>
-        <ion-button color="primary">
-            <ion-icon name="add-circle-outline"></ion-icon>
-          </ion-button>
-        </ion-row>
-      </ion-card>
+      <div class="textBox">
+        <ion-card class="activityTextBox">
+          <p style="text-align: center">Je hebt nog niets gepland</p>
+          <p style="text-align: center">Heb je zin in een activiteit? </p>
+        </ion-card>
+      </div>
+    </ion-row>
+    <app-mystery-activity></app-mystery-activity>
+    <app-activities-scrollview></app-activities-scrollview>
+  </div>
 </ion-content>

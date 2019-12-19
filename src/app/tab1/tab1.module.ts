@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
+import { MysteryActivityComponent } from '../mystery-activity/mystery-activity.component';
+import { ActivitiesScrollviewComponent } from '../activities-scrollview/activities-scrollview.component';
 
 @NgModule({
   imports: [
@@ -12,6 +14,6 @@ import { Tab1Page } from './tab1.page';
     FormsModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }])
   ],
-  declarations: [Tab1Page]
+  declarations: [Tab1Page, MysteryActivityComponent, ActivitiesScrollviewComponent]
 })
 export class Tab1PageModule {}

@@ -11,11 +11,71 @@
   border:1px solid red;
 }
 
+ion-header {
+  border-bottom: solid 1px purple;
+  border-bottom-color: #000 transparent transparent transparent;
+}
+
 ion-searchbar {
   padding-top: 0px;
   padding-bottom: 0px;
 }
 
 ion-button {
-  font-size: 12px;
+  font-size: 12px;  
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.arrow {
+  width: 23%;
+}
+
+.weekCalBtn {
+  --background: ;
+}
+
+.dayNumbers {
+  width: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.weekView {
+  width: 100%;
+}
+
+.days {
+  color: white;
+  font-size: 11px;
+  margin-left: 23.5%;
+  margin-right: 26.5%;
+  margin-bottom: 3%;
+}
+
+.selectedWeekBtn {
+  --border-color: white;
+  --border-width: 1px;
+  --border-radius: 50%;
+  --border-style: solid;
+}
+
+.currentActivityRow {
+  height: 15%;
+  width: 100%;
+}
+
+.textBox {
+  width: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+.activityTextBox {
+  color: white;
+  background-color: #BC0574;
+  margin-left: 15%;
+  margin-right: 15%;
 }
