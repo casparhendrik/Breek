@@ -20,6 +20,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyAWNBPBDugFodAjCyBIpxH7uab5S9HsdVs" />
+    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyB_Bm-Bb6nEW3xUD0Z8QlFwG3ayTlW-_5g" />
     <platform name="android">
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:networkSecurityConfig="@xml/network_security_config" />
