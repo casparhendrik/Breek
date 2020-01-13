@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService, Activity } from 'src/datastorage/firestore.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-activity',
@@ -15,11 +18,12 @@ export class CreateActivityPage implements OnInit {
   dateError = '';
   durationError = '';
   locationError = '';
-
+  customDayShortNames = '';
   startDate = '';
   duration = '';
 
-  constructor(private db: FirestoreService) { }
+  constructor(private db: FirestoreService, private location: Location, private navCntrl: NavController) {
+  }
 
   ngOnInit() {
   }
@@ -29,12 +33,20 @@ export class CreateActivityPage implements OnInit {
     const id = event.target.id;
     this.selectedCategory = id;
     this.resetButtons(classNames);
-    (document.getElementById(this.selectedCategory) as HTMLButtonElement).classList.add('isSelected');
+    if (id === 'movement') {
+      (document.getElementById(this.selectedCategory) as HTMLButtonElement).classList.add('pinkSelected');
+    } else if (id === 'rest') {
+      (document.getElementById(this.selectedCategory) as HTMLButtonElement).classList.add('blueSelected');
+    } else {
+      (document.getElementById(this.selectedCategory) as HTMLButtonElement).classList.add('purpleSelected');
+    }
   }
 
   resetButtons(classNames: string[]) {
     for (const iterator of classNames) {
-      (document.getElementById(iterator) as HTMLButtonElement).classList.remove('isSelected');
+      (document.getElementById(iterator) as HTMLButtonElement).classList.remove('pinkSelected');
+      (document.getElementById(iterator) as HTMLButtonElement).classList.remove('blueSelected');
+      (document.getElementById(iterator) as HTMLButtonElement).classList.remove('purpleSelected');
     }
   }
 
@@ -103,5 +115,9 @@ export class CreateActivityPage implements OnInit {
     if ((document.getElementById('location') as HTMLInputElement).value === '') {
       this.locationError = 'Geef een locatie van de activiteit';
     }
+  }
+
+  goBack() {
+    this.navCntrl.back();
   }
 }

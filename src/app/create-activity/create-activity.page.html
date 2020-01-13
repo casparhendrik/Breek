@@ -1,18 +1,19 @@
-<ion-header>
+<ion-header class="header">
   <ion-toolbar>
     <ion-title>Activiteit aanmaken</ion-title>
   </ion-toolbar>
+  <ion-row class="subHeader">
+    <div class="icon">
+      <ion-button (click)="goBack()" class="arrowBtn"><ion-icon class="arrowIcon" name="arrow-dropleft"></ion-icon></ion-button>
+    </div>
+  </ion-row>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>
-        Nog leuker! Maak je eigen activiteit aan en nodig collega's uit. 
-        Vul de informatie in die nodig is om de activiteit toe te voegen aan het overzicht.
-      </ion-card-subtitle>
-  </ion-card-header>
-  <ion-card-content>
+  <ion-card class="createCard">
+  <ion-card-content class="cardContent">
+      <p class="headerText">Nog leuker! Maak je eigen activiteit aan en nodig collega's uit. 
+          Vul de informatie in die nodig is om de activiteit toe te voegen aan het overzicht.</p>
     <h4>Activiteit</h4>
     <ion-input id="activityName"></ion-input>
     <span class="error">{{ activityNameError }}</span>
@@ -21,9 +22,9 @@
     <span class="error">{{ activityDescriptionError }}</span>
     <h4>Categorie</h4>
     <ion-row class="ion-justify-content-around">
-        <ion-button id="movement" (click)="categoryBtnPressed($event)" class="defaultBtn">Beweging</ion-button>
-        <ion-button id="rest" (click)="categoryBtnPressed($event)" class="defaultBtn">Rust</ion-button>
-        <ion-button id="game" (click)="categoryBtnPressed($event)" class="defaultBtn">Spel</ion-button>
+        <ion-button id="movement" (click)="categoryBtnPressed($event)" class="pinkBtn defaultBtn">Beweging</ion-button>
+        <ion-button id="rest" (click)="categoryBtnPressed($event)" class="blueBtn defaultBtn">Rust</ion-button>
+        <ion-button id="game" (click)="categoryBtnPressed($event)" class="purpleBtn defaultBtn">Spel</ion-button>
     </ion-row>
     <span class="error">{{ categoryError }}</span>
     <ion-row>
@@ -36,9 +37,7 @@
     </ion-row>
     <ion-row>
       <ion-col class="customCol" size="8">
-        <ion-datetime [(ngModel)]="startDate" id="startDate" max="2030-12-31" placeholder="Datum" displayFormat="YYYY-DD-MM HH:mm"
-        [dayShortNames]="customDayShortNames"
-        monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des"></ion-datetime>
+        <ion-datetime [(ngModel)]="startDate" id="startDate" picker-format="DDDD H:mm" display-format="DDDD H:mm" max="2030-12-31" placeholder="Datum"></ion-datetime>
       </ion-col>
       <ion-col class="customCol">
         <ion-datetime [(ngModel)]="duration" id="duration" display-format="mm" placeholder="Tijd"></ion-datetime>
@@ -56,8 +55,8 @@
     <ion-input id="location"></ion-input>
     <span class="error">{{ locationError }}</span>
     <ion-row class="ion-justify-content-around submitRow">
-      <ion-button class="submitBtn">Collega's uitnodigen</ion-button>
-      <ion-button class="submitBtn" (click)="createActivity()">Aanmaken</ion-button>
+      <ion-button class="blueBtn submitBtn">Collega's uitnodigen</ion-button>
+      <ion-button class="purpleBtn submitBtn" (click)="createActivity()">Aanmaken</ion-button>
     </ion-row>
 
   </ion-card-content>

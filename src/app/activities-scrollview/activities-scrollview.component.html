@@ -1,7 +1,10 @@
 <ion-row>
-  <ion-row><h6>Activiteiten voor vandaag</h6></ion-row>
+  <ion-row class="searchBarRow" *ngIf="removeHeader">
+    <ion-searchbar (ionInput)="handleInput($event)" id="searchbar" placeholder="zoek" class="searchBar"></ion-searchbar>
+  </ion-row>
+  <ion-row *ngIf="!removeHeader"><h6>Activiteiten voor vandaag</h6></ion-row>
   
-  <ion-row style="width: 100%">
+  <ion-row *ngIf="!removeHeader" style="width: 100%">
     <div style="width: 100%">
       <ion-button id="timeBtnOne" (click)="timeBtnPressed($event)" class="timeBtn isSelected">12:00 uur</ion-button>
       <ion-button id="timeBtnTwo" (click)="timeBtnPressed($event)" class="timeBtn">12:30 uur</ion-button>
@@ -9,18 +12,29 @@
       <ion-button id="others" (click)="timeBtnPressed($event)" class="timeBtn">Overig</ion-button>
     </div>
   </ion-row>
-  <ion-row style="width: 100%;">
-    <ion-card class="activityCard" *ngFor="let activity of activities | async">
-        <ul style="padding-left: 5%;">
-          <p style="margin-bottom: 5%; margin-top: 5%;">Rust</p>
-          <p style="margin-top: 5%;">YOGA</p>
-          <p style="margin-bottom: 5%;">12:30 uur - 20 min</p>
-          <p style="margin-top: 5%; margin-bottom: 5%;">lokaal C.302</p>
-        </ul>
-    </ion-card>
-  </ion-row>
-
-
-
-
+  <div class="scrollView" style="width: 100%">
+      <ion-card id="{{activity.id}}card" tabindex="0" (click)="cardPressed($event)" class="activityCard" *ngFor="let activity of filteredActivities">
+          <ul id="{{activity.id}}ulLi" class="" style="padding-left: 5%; width: 100%; float: left;">
+            <p id="{{activity.id}}type" style="margin-bottom: 5%; margin-top: 5%;">{{activity.type}}</p>
+            <p id="{{activity.id}}name" style="margin-top: 5%; font-weight: bold">{{activity.name}}</p>
+            <p id="{{activity.id}}date" style="margin-bottom: 5%; font-weight: bold;">{{activity.startDate.slice(0, 10)}}</p>
+            <p id="{{activity.id}}loca" style="margin-top: 5%; margin-bottom: 5%;">{{activity.location}}</p>
+          </ul> 
+         <ul id="{{activity.id}}desc" style="display: none;">
+           <p id="{{activity.id}}" style="width: 50px;">{{ activity.description }}</p>
+           <div>
+            <ion-button class="createBtn">Meedoen</ion-button>
+           </div>
+         </ul>
+      </ion-card>
+  </div>
+  <div *ngIf="!removeHeader" class="createRow">
+    <ion-button (click)="createBtnPressed()" class="createBtn">Activiteit toevoegen</ion-button>
+  </div>
+  <div style="width:100%" *ngIf="removeHeader">
+    <label style="margin-left: 5%; margin-right: 15%;">
+      Activiteit toevoegen
+    </label>
+    <ion-button (click)="createBtnPressed()" class="createBtn">Activiteit creeren</ion-button>
+  </div>
 </ion-row>

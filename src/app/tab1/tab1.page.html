@@ -5,17 +5,17 @@
     </ion-title>
   </ion-toolbar>
   <ion-row class="weekView">
-    <ion-button class="weekCalBtn arrow">
+    <ion-button (click)="goBack()" class="weekCalBtn arrow">
       <ion-icon name="arrow-back"></ion-icon>
     </ion-button>
     <div class="dayNumbers">
-      <ion-button class="weekCalBtn selectedWeekBtn">1</ion-button>
-      <ion-button class="weekCalBtn">2</ion-button>
-      <ion-button class="weekCalBtn">3</ion-button>
-      <ion-button class="weekCalBtn">4</ion-button>
-      <ion-button class="weekCalBtn">5</ion-button>
+      <ion-button id={{dateNumbers[0]}} (click)=weekBtnPressed($event) class="weekCalBtn">{{ dateNumbers[0] }}</ion-button>
+      <ion-button id={{dateNumbers[1]}} (click)=weekBtnPressed($event) class="weekCalBtn">{{ dateNumbers[1] }}</ion-button>
+      <ion-button id={{dateNumbers[2]}} (click)=weekBtnPressed($event) class="weekCalBtn">{{ dateNumbers[2] }}</ion-button>
+      <ion-button id={{dateNumbers[3]}} (click)=weekBtnPressed($event) class="weekCalBtn">{{ dateNumbers[3] }}</ion-button>
+      <ion-button id={{dateNumbers[4]}} (click)=weekBtnPressed($event) class="weekCalBtn">{{ dateNumbers[4] }}</ion-button>
     </div>
-    <ion-button class="weekCalBtn arrow">
+    <ion-button (click)="goForward()" class="weekCalBtn arrow">
       <ion-icon name="arrow-forward"></ion-icon>
     </ion-button>
   </ion-row>
@@ -27,7 +27,6 @@
     <div>vr</div>
   </ion-row>
 </ion-header>
-
 <ion-content>
   <div class="currentActivityRow">
     <ion-row>
@@ -43,5 +42,6 @@
     </ion-row>
     <app-mystery-activity></app-mystery-activity>
     <app-activities-scrollview></app-activities-scrollview>
+    <app-colleagues-view></app-colleagues-view>
   </div>
 </ion-content>

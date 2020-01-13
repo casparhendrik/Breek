@@ -6,6 +6,36 @@ ion-input {
     --padding-bottom: 0px;
 }
 
+.cardContent {
+    padding-top: 0px;
+    color: black;
+}
+
+.arrowBtn {
+    --background: transparent;
+    --padding-start: 0px;
+    --padding-end: 0px;
+    --background-activated: transparent;
+}
+
+.icon {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0%;
+}
+
+.arrowIcon {
+    color: white;
+    font-size: 32px;
+}
+
+.headerText {
+    color: black;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
 .invalid {
     border-style: solid;
     border-width: 2px;
@@ -24,8 +54,7 @@ ion-input {
 .submitBtn {
     font-size: 12px;
     width: 40%;
-    --background: black;
-    --border-radius: 2px;
+    --border-radius: 3px;
 }
 
 ion-textarea {
@@ -58,21 +87,45 @@ h4 {
 }
 
 .defaultBtn {
-    font-size: 11px !important;
+    font-size: 11px;
     width: 30%;
-    --color: black;
+    --color: white;
     --color-activated:white;
-    --background: white;
-    --background-activated: black;
-    --border-width: 1px;
-    --border-radius: 5px;
-    --border-style: solid;
+    --border-radius: 3px;
 }
 
-.isSelected {
-    color: white;
-    --background: black;
-    --background-activated: white;
+.pinkBtn {
+    --background: #BC0574;
+}
+
+.blueBtn {
+    --background: #698EA9;
+}
+
+.purpleBtn {
+    --background: #32157C;
+}
+
+.pinkSelected {
+    color: black;
+    --background: #BC0574;
+    --background-activated: #BC0574;
+    --color-activated: black;
+    --border-style: none;
+}
+
+.blueSelected {
+    color: black;
+    --background: #698EA9;
+    --background-activated: #698EA9;
+    --color-activated: black;
+    --border-style: none;
+}
+
+.purpleSelected {
+    color: black;
+    --background: #32157C;
+    --background-activated: #32157C;
     --color-activated: black;
     --border-style: none;
 }

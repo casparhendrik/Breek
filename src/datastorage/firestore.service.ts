@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
 import { NavController } from '@ionic/angular';
+import { MysteryActivityComponent } from 'src/app/mystery-activity/mystery-activity.component';
 
 export interface User {
     id?: string;
@@ -66,6 +67,20 @@ export class FirestoreService {
 
     getAllActivities(): Observable<Activity[]> {
         const ref = this.db.collection<Activity>('activities');
+        this.activities = ref.snapshotChanges().pipe(
+            map(activities => {
+                return activities.map(a => {
+                    const data = a.payload.doc.data();
+                    const id = a.payload.doc.id;
+                    return {id, ...data};
+                });
+            })
+        );
+        return this.activities;
+    }
+
+    getAcitivities(searchText: string): Observable<Activity[]> {
+        const ref = this.db.collection<Activity>('activities', ref => ref.where('name', '>=', searchText));
         this.activities = ref.snapshotChanges().pipe(
             map(activities => {
                 return activities.map(a => {

@@ -11,7 +11,7 @@
 
 .dateCard {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 11px;
     color: black;
     width: 25%;
     margin-top: 10%;
@@ -30,11 +30,12 @@
 
 .joinBtn {
     --background:#32157C;
+    --background-activated: #32157C;
     width: 100%;
     margin-right: 11%;
     margin-top: 10%;
     margin-bottom: 5%;
-    --border-radius: 10%;
+    --border-radius: 11px;
 }
 
 h5 {

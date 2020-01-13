@@ -28,6 +28,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'activities-page',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../activities-page/activities-page.module').then(m => m.ActivitiesPagePageModule)
+          }
+        ]
+      },
+      {
         path: 'tab3',
         children: [
           {

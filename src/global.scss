@@ -33,13 +33,14 @@ ion-toolbar ion-title {
     padding-left: 20px;
 }
 
-ion-content {
-}
-
 ion-toolbar {
     --background: #32157C;
 }
 
 ion-header {
-    background-color: #32157C;
+    background-image: url("assets/Header.png");
+    background-size: 110% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 115px;
 }
