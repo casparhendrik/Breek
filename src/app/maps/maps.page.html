@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Maps
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id='map_canvas'>
+      <span class="smallPanel" 
+        *ngIf="distance">{{distance}}</span>
+        <span class="smallPanel" 
+          *ngIf="time">{{time}}</span>
+    <ion-button ion-button (click)="onButtonClick()">Add marker</ion-button>
+  </div>
+</ion-content>
