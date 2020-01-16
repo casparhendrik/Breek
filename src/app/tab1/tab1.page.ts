@@ -1,15 +1,16 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnChanges } from '@angular/core';
 import { FirestoreService, Activity } from 'src/datastorage/firestore.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { ActivitiesScrollviewComponent } from '../activities-scrollview/activities-scrollview.component';
 
 @Component({
-  templateUrl: 'tab1.page.html',
+  templateUrl:
+  'tab1.page.html',
   selector: 'app-tab1',
-  styleUrls: ['tab1.page.scss']
+  styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page implements OnInit, AfterViewInit {
-
 
   dateNumbers: string[] = [];
   dayNumbers: string[] = [];
@@ -17,14 +18,24 @@ export class Tab1Page implements OnInit, AfterViewInit {
 
   daysWithNumbers: string[][] = [['1', 'ma'], ['2', 'di'], ['3', 'wo'], ['4', 'do'], ['5', 'vr'], ['6', 'za'], ['7', 'zo']];
 
-  lastSelected: string = '';
+  lastSelected = '';
 
   currentDate = new Date();
 
-  constructor(private storage: FirestoreService, private router: Router) {
+  currentUserActivities: Activity[] = [];
+  userHasActivities = false;
+
+  constructor(private db: FirestoreService, private router: Router) {
+    if (this.checkIfWeekdays()) {
+      this.lastSelected = new Date().getDate().toString();
+    }
+    this.currentUserActivities.forEach(activity => {
+      console.log(activity.id);
+    });
   }
 
   ngOnInit() {
+    this.getActivitys();
     this.initializeDates(this.currentDate);
     this.refactorDaysToString();
   }
@@ -36,7 +47,6 @@ export class Tab1Page implements OnInit, AfterViewInit {
   initializeSelectedWeekBtn() {
     if (this.checkIfWeekdays()) {
       (document.getElementById(new Date().getDate().toString())).classList.add('selectedWeekBtn');
-      this.lastSelected = new Date().getDay().toString();
     }
   }
 
@@ -51,14 +61,12 @@ export class Tab1Page implements OnInit, AfterViewInit {
       if (day[0] === '0') {
         day = day.slice(1, 2);
       }
-      console.log(day);
       this.dateNumbers.push(day);
     }
   }
 
   refactorDaysToString() {
     for (const value of this.dayNumbers) {
-      console.log(value);
       switch (value) {
         case '1':
           this.days.push('ma');
@@ -108,5 +116,21 @@ export class Tab1Page implements OnInit, AfterViewInit {
     } else {
       return true;
     }
+  }
+
+  getActivitys() {
+    const currentUser = localStorage.getItem('currentUserId');
+    this.db.getAllActivities().subscribe(activities => {
+      activities.forEach(activity => {
+        activity.participants.forEach(participant => {
+          if (participant === currentUser) {
+            const currentTime = new Date(activity.startDate);
+            activity.startDate = currentTime.getHours() + ':' + currentTime.getMinutes();
+            this.currentUserActivities.push(activity);
+            this.userHasActivities = true;
+          }
+        });
+      });
+    });
   }
 }

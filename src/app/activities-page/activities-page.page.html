@@ -27,7 +27,7 @@
             </ion-row>
             <ion-row>
               <ion-col class="customCol" size="8">
-                <ion-datetime [(ngModel)]="myDate" id="startDate" picker-format="DDDD H:mm" display-format="DDDD H:mm" max="2030-12-31" placeholder="Datum"></ion-datetime>
+                <ion-datetime [(ngModel)]="startDate" id="startDate" picker-format="DDDD H:mm" display-format="DDDD H:mm" max="2030-12-31" placeholder="Datum"></ion-datetime>
               </ion-col>
               <ion-col class="customCol">
                 <ion-datetime [(ngModel)]="duration" id="duration" display-format="mm" placeholder="Tijd"></ion-datetime>
@@ -41,12 +41,13 @@
                 <span class="error">{{ durationError }}</span>
             </ion-col>
           </ion-row>
-          <ion-input id="{{activity.title}}input" id="location"></ion-input>
+          <ion-input id="{{activity.title}}location" id="location"></ion-input>
           <span id="{{activity.title}}input" class="error">{{ locationError }}</span>
           <ion-row id="{{ activity.title }}div" class="ion-justify-content-around submitRow" style="margin-top: 5%;">
               <ion-button class="blueBtn submitBtn">Collega's uitnodigen</ion-button>
               <ion-button class="purpleBtn submitBtn" (click)="createActivity()">Aanmaken</ion-button>
             </ion-row>
+            <div id="{{activity.title}}type" style="display: none;"></div>
       </div>
     </ion-card-content>
   </ion-card>

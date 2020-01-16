@@ -76,3 +76,18 @@ ion-searchbar {
   margin-left: 15%;
   margin-right: 15%;
 }
+
+.activityCard {
+  width: 80%;
+  height: 80%;
+  padding: 0px;
+  margin: 20px;
+  border-radius: 11%;
+  background-color: #2178A5;
+  color:white;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  -webkit-transition: width 0.2s; /* Safari prior 6.1 */
+  transition: width 0.2s;
+}

@@ -29,13 +29,13 @@ export class CreateActivityPage implements OnInit {
   }
 
   categoryBtnPressed(event) {
-    const classNames = ['movement', 'rest', 'game'];
+    const classNames = ['bewegen', 'rust', 'spel'];
     const id = event.target.id;
     this.selectedCategory = id;
     this.resetButtons(classNames);
-    if (id === 'movement') {
+    if (id === 'bewegen') {
       (document.getElementById(this.selectedCategory) as HTMLButtonElement).classList.add('pinkSelected');
-    } else if (id === 'rest') {
+    } else if (id === 'rust') {
       (document.getElementById(this.selectedCategory) as HTMLButtonElement).classList.add('blueSelected');
     } else {
       (document.getElementById(this.selectedCategory) as HTMLButtonElement).classList.add('purpleSelected');
@@ -54,10 +54,11 @@ export class CreateActivityPage implements OnInit {
     this.resetErrorMessages();
     this.validateData();
     if (this.checkErrors()) {
+      this.duration = new Date(this.duration).getMinutes().toString();
       const newActivity: Activity = {
         name: (document.getElementById('activityName') as HTMLInputElement).value,
         description: (document.getElementById('activityDescription') as HTMLInputElement).value,
-        type: this.selectedCategory,
+        type: this.selectedCategory.toUpperCase(),
         startDate: this.startDate,
         durationInMinutes: this.duration,
         participants: [],

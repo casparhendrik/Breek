@@ -93,6 +93,16 @@ export class FirestoreService {
         return this.activities;
     }
 
+    getMysteryActivity(id: string): Observable<Activity> {
+        const ref = this.db.collection('mysteryactivities').doc<Activity>(id);
+        const mysteryactivity = ref.valueChanges().pipe(
+            map (activity => {
+                activity.id = id;
+                return activity;
+            }));
+        return mysteryactivity;
+    }
+
     createActivity(newActivity: Activity) {
         const ref = this.db.collection<Activity>('activities');
         const newId: string = uuid();
@@ -106,9 +116,37 @@ export class FirestoreService {
             location: newActivity.location
         }).then(() => {
             this.navCntrl.navigateBack('/tabs/tabs');
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
+    createMysteryActivity() {
+        const ref = this.db.collection<Activity>('mysteryactivities');
+        const newId: string = uuid();
+        ref.doc(newId).set({
+            name: 'Groeps-yoga',
+            type: 'bewegen',
+            description: 'Een leuk gezellige groepsyoga sessie!',
+            durationInMinutes: '20',
+            startDate: '2020-01-20T09:44:32.215+01:00',
+            participants: ['Erik', 'Fleur'],
+            location: 'In het park'
+        }).then(() => {
+            this.navCntrl.navigateBack('/tabs/tabs/activities-page');
         }).catch(() => {
             console.log('error');
         });
     }
+
+    updateMysteryActivity(mysteryActivity: Activity) {
+        const ref = this.db.collection('mysteryactivities').doc(mysteryActivity.id).update({ participants: mysteryActivity.participants });
+    }
+
+    updateActivity(activity: Activity) {
+        console.log(activity.id);
+        const ref = this.db.collection('activities').doc(activity.id).update({participants: activity.participants});
+    }
+
 
 }

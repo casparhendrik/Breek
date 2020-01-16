@@ -31,17 +31,25 @@
   <div class="currentActivityRow">
     <ion-row>
       <div class="textBox">
-        <h6 style="text-align: center; padding-left: 5%; padding-right: 6%;">MIJN GEPLANDE PAUZE ACTIVITEIT</h6>
+        <h6 style="text-align: center; padding-left: 20%; padding-right: 10%; padding-bottom: 25%; text-align: start">MIJN GEPLANDE PAUZE ACTIVITEIT</h6>
       </div>
       <div class="textBox">
-        <ion-card class="activityTextBox">
+        <ion-card *ngIf="!userHasActivities" class="activityTextBox">
           <p style="text-align: center">Je hebt nog niets gepland</p>
-          <p style="text-align: center">Heb je zin in een activiteit? </p>
+          <p style="text-align: center">Heb je zin in een activiteit?</p>
+        </ion-card>
+        <ion-card *ngIf="userHasActivities" class="activityCard">
+          <ul style="padding: 0;">
+            <p id="{{currentUserActivities[0].id}}type" style="margin-bottom: 5px; margin-top: 10px; font-weight: 400">{{currentUserActivities[0].type}}</p>
+            <p id="{{currentUserActivities[0].id}}name" style="margin-top: 5px;">{{currentUserActivities[0].name}}</p>
+            <p id="{{currentUserActivities[0].id}}date" style="margin-bottom: 5px;">{{currentUserActivities[0].startDate}} uur - {{currentUserActivities[0].durationInMinutes}} min</p>
+            <p id="{{currentUserActivities[0].id}}loca" style="margin-top: 5px; margin-bottom: 10px; font-weight: 400">{{currentUserActivities[0].location}}</p>
+          </ul> 
         </ion-card>
       </div>
     </ion-row>
     <app-mystery-activity></app-mystery-activity>
-    <app-activities-scrollview></app-activities-scrollview>
+    <app-activities-scrollview [currentDate]="lastSelected"></app-activities-scrollview>
     <app-colleagues-view></app-colleagues-view>
   </div>
 </ion-content>

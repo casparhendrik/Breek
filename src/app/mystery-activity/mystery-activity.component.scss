@@ -13,19 +13,19 @@
     background-color: white;
     border-radius: 11px;
     color: black;
-    width: 25%;
+    width: 28%;
     margin-top: 10%;
-    margin-left: 5px;
+    margin-left: 2px;
     margin-bottom: 0px;
-    margin-right: 5px;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
+    margin-right: 2px;
+    float: left;
 }
 
 .dateCardText {
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: block;
+    text-align: center;
 }
 
 .joinBtn {

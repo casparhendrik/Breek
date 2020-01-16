@@ -26,8 +26,9 @@
 
 .activityCard {
     width: 40%;
+    height: 80%;
     padding: 0px;
-    margin: 5%;
+    margin: 20px;
     margin-right: 0%;
     border-radius: 11%;
     background-color: #2178A5;
@@ -35,8 +36,8 @@
     text-align: center;
     display: inline-block;
     font-size: 12px;
-    -webkit-transition: width 0.5s; /* Safari prior 6.1 */
-    transition: width 0.5s;
+    -webkit-transition: width 0.2s; /* Safari prior 6.1 */
+    transition: width 0.2s;
 }
 
 .activityCard:focus {
@@ -59,15 +60,15 @@
     --background-hover: #32275C;
 }
 
-.backgroundPink {
+.BEWEGEN {
     background-color: #BC0574;
 }
 
-.backgroundPurple {
+.SPEL {
     background-color: #32175C;
 }
 
-.backgroundBlue {
+.RUST {
     background-color: #698EA9;
 }
 
@@ -93,4 +94,18 @@
 
 .cardContent {
     border-left: 1px solid white;
+}
+
+.noActivitiesFoundClass {
+    height: 100px;
+}
+
+.colorBlock {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin-left: 0;
+    margin-bottom: 0%;
+    border-radius: 11px;
+    overflow: auto;
 }

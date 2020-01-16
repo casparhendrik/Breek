@@ -1,28 +1,31 @@
-<ion-row class="mysteryBox">
+<ion-row class="mysteryBox" *ngIf="mysteryActivity | async as mystery">
   <div class="mysteryActTextBox" style="width: 50%">
     <ul style="padding-left: 8px; padding-right: 8px">
       <h5 style="margin: 5px 0px;">MYSTERY ACTIVITEIT</h5>
-      <p style="margin: 5px 0px;">Woensdag 8 januari</p>
-      <p style="margin: 5px 0px;">13.00 uur - 30 min</p>
-      <p style="margin: 0px 0px;">23 mensen doen al mee</p>
+      <p style="margin: 5px 0px;">{{weekDay[countdownDate.getDay() + 1]}} {{countdownDate.getDate()}} {{months[countdownDate.getMonth()]}}</p>
+      <p style="margin: 5px 0px;">{{countdownDate.getHours()}}:{{countdownDate.getMinutes()}} - {{mystery.durationInMinutes}} min</p>
+      <p style="margin: 0px 0px;">{{mystery.participants.length}} mensen doen al mee</p>
     </ul>
     
   </div>
   <div style="width: 50%">
     <ion-row>
       <ion-card class="dateCard">
-        <p class="dateCardText">{{days }} </p>
-        <p class="dateCardText"> dagen</p>
+        <p class="dateCardText" style="width: 50%; margin-left: 25%; margin-right: 25%; margin-top: 25%;">{{ days }} </p>
+        <p class="dateCardText" style="margin-bottom: 25%;"> dagen</p>
       </ion-card>
       <ion-card class="dateCard">
-        <p>{{hours}} uur</p>
+        <p class="dateCardText" style="width: 50%; margin-left: 25%; margin-right: 25%; margin-top: 25%;">{{hours}}</p>
+        <p class="dateCardText" style="margin-bottom: 25%;"> uur</p>
       </ion-card>
       <ion-card class="dateCard">
-        <p>{{minutes}} minuten</p>
+        <p class="dateCardText" style="width: 50%; margin-left: 25%; margin-right: 25%; margin-top: 25%;">{{minutes}}</p>
+        <p class="dateCardText" style="margin-bottom: 25%;"> minuten</p>
       </ion-card>
     </ion-row>
     <ion-row>
-      <ion-button class="joinBtn">MEEDOEN</ion-button>
+      <ion-button *ngIf="!isJoined" (click)="joinBtnPressed()" class="joinBtn">MEEDOEN</ion-button>
+      <ion-button *ngIf="isJoined" (click)="unJoinPressed() " class="joinBtn">UITSCHRIJVEN</ion-button>
     </ion-row>
   </div>
 </ion-row>

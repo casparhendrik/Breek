@@ -30,6 +30,7 @@ export class LoginFormPage implements OnInit {
       if (result.length === 0) {
         this.errorMessage = 'No match found for this email and password';
       } else {
+        localStorage.setItem('currentUserId', result[0].id);
         this.router.navigate(['/tabs/tabs/tab1'], { replaceUrl: true });
       } });
     }
