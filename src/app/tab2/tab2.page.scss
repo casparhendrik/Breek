@@ -1,1 +1,109 @@
-
+ion-header {
+    height: 15%;
+    background: url('../../assets/Header.png') no-repeat center center / 110% 100%;
+  }
+  
+  ion-title {
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #32227c;
+  
+    &::after {
+      position: absolute;
+      content: "";
+      width: 50px;
+      height: 50px;
+      top: 0;
+      right: 0;
+      background: url('../../assets/Meldingen_icoon.png') no-repeat center center / 75%;
+    }
+  }
+  
+  #date-selector {
+    margin-top: -10px;
+    padding:0 20%;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+  
+    .date_number {
+      font-weight: bold;
+  
+      &.current {
+        width: 2rem;
+        height: 2rem;
+        z-index: 10;
+        border: 1px solid #fff;
+        border-radius: 50%;
+      }
+    }
+  
+    &::before {
+      content: "<";
+      position: absolute;
+      left: 10px;
+      top: 50%;
+    }
+  
+    &::after {
+      content: ">";
+      position: absolute;
+      top: 50%;
+      right: 10px;
+    }
+  }
+  
+  #daily-calendar {
+    --background: url('../../assets/Vlekken_Achtergrond.png') no-repeat center center / cover;
+  }
+  
+  .title {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .time_stamp {
+    font-weight: bold;
+    min-height: 45px;
+  }
+  
+  .rowcontainer {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    * {
+      text-align: center;
+    }
+  }
+  
+  .planning_item {
+    margin: 0;
+    height: 100%;
+    background-color: #fff;
+  
+    ion-card-title, ion-card-subtitle {
+      padding-left: 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #000;
+      font-size: 14px;
+    }
+  
+    &.suggestion {
+      background-color: #2477a5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      ion-card-subtitle {
+        padding: 0;
+        color: #fff;
+      }
+    }
+  }
+  
