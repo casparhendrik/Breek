@@ -1,0 +1,111 @@
+.timeBtn {
+    width: 25%;
+    margin-left: 0px;
+    margin-right: 0px;
+    --background: #ECEEF3;
+    color: black;
+    --border-radius: 0px;
+    --background-activated: #ECEEF3;
+    --background-focused: #ECEEF3;
+    --background-hover: #ECEEF3;
+    --color-activated: black;
+}
+
+.isSelected {
+    border-bottom-style: solid;
+    border-bottom-width: 8px;
+    border-bottom-color: #2178A5;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.scrollView {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.activityCard {
+    width: 40%;
+    height: 80%;
+    padding: 0px;
+    margin: 20px;
+    margin-right: 0%;
+    border-radius: 11%;
+    background-color: #2178A5;
+    color:white;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    -webkit-transition: width 0.2s; /* Safari prior 6.1 */
+    transition: width 0.2s;
+}
+
+.activityCard:focus {
+    width: 80%;
+}
+
+.createRow {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30;
+    margin-bottom: 5%;
+}
+
+.createBtn {
+    font-size: 13px;
+    --background: #32175C;
+    --border-radius: 11px;
+    --background-activated: #32175C;
+    --color-activated: white;
+    --background-hover: #32275C;
+}
+
+.BEWEGEN {
+    background-color: #BC0574;
+}
+
+.SPEL {
+    background-color: #32175C;
+}
+
+.RUST {
+    background-color: #698EA9;
+}
+
+.searchBarRow {
+    width: 100%;
+}
+
+.searchBar {
+    --background: white;
+    --color: black;
+    --icon-color: black;
+    --placeholder-color: black;
+    border-radius: 11px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    padding: 0px;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 1%;
+    height: 25px;
+}
+
+.cardContent {
+    border-left: 1px solid white;
+}
+
+.noActivitiesFoundClass {
+    height: 100px;
+}
+
+.colorBlock {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin-left: 0;
+    margin-bottom: 0%;
+    border-radius: 11px;
+    overflow: auto;
+}

@@ -1,41 +1,55 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab One
+      VANDAAG
     </ion-title>
   </ion-toolbar>
+  <ion-row class="weekView">
+    <ion-button (click)="goBack()" class="weekCalBtn arrow">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    <div class="dayNumbers">
+      <ion-button id={{dateNumbers[0]}} (click)=weekBtnPressed($event) class="weekCalBtn">{{ dateNumbers[0] }}</ion-button>
+      <ion-button id={{dateNumbers[1]}} (click)=weekBtnPressed($event) class="weekCalBtn">{{ dateNumbers[1] }}</ion-button>
+      <ion-button id={{dateNumbers[2]}} (click)=weekBtnPressed($event) class="weekCalBtn">{{ dateNumbers[2] }}</ion-button>
+      <ion-button id={{dateNumbers[3]}} (click)=weekBtnPressed($event) class="weekCalBtn">{{ dateNumbers[3] }}</ion-button>
+      <ion-button id={{dateNumbers[4]}} (click)=weekBtnPressed($event) class="weekCalBtn">{{ dateNumbers[4] }}</ion-button>
+    </div>
+    <ion-button (click)="goForward()" class="weekCalBtn arrow">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
+  </ion-row>
+  <ion-row class="ion-justify-content-around days">
+    <div>ma</div>
+    <div>di</div>
+    <div>wo</div>
+    <div>do</div>
+    <div>vr</div>
+  </ion-row>
 </ion-header>
-
 <ion-content>
-    <ion-card class="welcome-card">
-      <img src="/assets/shapes.svg" alt="" />
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-list lines="none">
-      <ion-list-header>
-        <ion-label>Resources</ion-label>
-      </ion-list-header>
-      <ion-item href="https://ionicframework.com/docs/">
-        <ion-icon slot="start" color="medium" name="book"></ion-icon>
-        <ion-label>Ionic Documentation</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/building/scaffolding">
-        <ion-icon slot="start" color="medium" name="build"></ion-icon>
-        <ion-label>Scaffold Out Your App</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/layout/structure">
-        <ion-icon slot="start" color="medium" name="grid"></ion-icon>
-        <ion-label>Change Your App Layout</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
-        <ion-label>Theme Your App</ion-label>
-      </ion-item>
-    </ion-list>
+  <div class="currentActivityRow">
+    <ion-row>
+      <div class="textBox">
+        <h6 style="text-align: center; padding-left: 20%; padding-right: 10%; padding-bottom: 25%; text-align: start">MIJN GEPLANDE PAUZE ACTIVITEIT</h6>
+      </div>
+      <div class="textBox">
+        <ion-card *ngIf="!userHasActivities" class="activityTextBox">
+          <p style="text-align: center">Je hebt nog niets gepland</p>
+          <p style="text-align: center">Heb je zin in een activiteit?</p>
+        </ion-card>
+        <ion-card *ngIf="userHasActivities" class="activityCard">
+          <ul style="padding: 0;">
+            <p id="{{currentUserActivities[0].id}}type" style="margin-bottom: 5px; margin-top: 10px; font-weight: 400">{{currentUserActivities[0].type}}</p>
+            <p id="{{currentUserActivities[0].id}}name" style="margin-top: 5px;">{{currentUserActivities[0].name}}</p>
+            <p id="{{currentUserActivities[0].id}}date" style="margin-bottom: 5px;">{{currentUserActivities[0].startDate}} uur - {{currentUserActivities[0].durationInMinutes}} min</p>
+            <p id="{{currentUserActivities[0].id}}loca" style="margin-top: 5px; margin-bottom: 10px; font-weight: 400">{{currentUserActivities[0].location}}</p>
+          </ul> 
+        </ion-card>
+      </div>
+    </ion-row>
+    <app-mystery-activity></app-mystery-activity>
+    <app-activities-scrollview [currentDate]="lastSelected"></app-activities-scrollview>
+    <app-colleagues-view></app-colleagues-view>
+  </div>
 </ion-content>

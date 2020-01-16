@@ -1,0 +1,105 @@
+.exampleCards {
+    padding-left: 0;
+    padding-right: 0;
+    --border-radius: 11px;
+    -webkit-transition: width 0.5s; /* Safari prior 6.1 */
+    transition: height 0.5s;
+    height: 20%;
+}
+
+.exampleCardContent{
+    padding-top: 0;
+    padding-right: 5%;
+    color: black;
+    text-align: left;
+    width: 100%;
+    padding-bottom: 2%;
+}
+
+.titleRow {
+    font-size: 18px;
+    font-weight: 600;
+    vertical-align: middle;
+    color: black;
+}
+
+.icon {
+    color: black;
+    font-size: 20px;
+}
+
+.contentText {
+    width: 70%;
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: top;
+    margin-top: 3%;
+    padding-right: 8%;
+}
+
+.colorBlock {
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+    margin-left: 0;
+    margin-bottom: 0%;
+    border-radius: 11px;
+    overflow: auto;
+}
+
+.backgroundBlue {
+    background-color:#698EA9;
+}
+
+.backgroundPurple {
+    background-color: #32157C;
+}
+
+.backgroundPink {
+    background-color: #BC0574;
+}
+
+.nodisplay {
+    display: none;
+}
+
+.openedCard {
+    height: 50%;
+}
+
+.pinkBtn {
+    --background: #BC0574;
+}
+
+.blueBtn {
+    --background: #698EA9;
+}
+
+.purpleBtn {
+    --background: #32157C;
+}
+
+.submitBtn {
+    font-size: 12px;
+    width: 40%;
+    --border-radius: 3px;
+}
+
+ion-input {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    --padding-top: 0px;
+    --padding-bottom: 0px;
+}
+
+.error {
+    font-size: 11px;
+    color: red;
+}
+
+.cardBackground {
+    background-size: 110% 110%;
+    background-repeat: no-repeat;
+    background-position: center;
+}

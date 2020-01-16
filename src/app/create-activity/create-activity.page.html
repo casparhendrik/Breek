@@ -1,0 +1,64 @@
+<ion-header class="header">
+  <ion-toolbar>
+    <ion-title>Activiteit creeën</ion-title>
+  </ion-toolbar>
+  <ion-row class="subHeader">
+    <div class="icon">
+      <ion-button (click)="goBack()" class="arrowBtn"><ion-icon class="arrowIcon" name="arrow-dropleft"></ion-icon></ion-button>
+    </div>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <ion-card class="createCard">
+  <ion-card-content class="cardContent">
+      <p class="headerText">Nog leuker! Maak je eigen activiteit aan en nodig collega's uit. 
+          Vul de informatie in die nodig is om de activiteit toe te voegen aan het overzicht.</p>
+    <h4>Activiteit</h4>
+    <ion-input id="activityName"></ion-input>
+    <span class="error">{{ activityNameError }}</span>
+    <h4>Informatie</h4>
+    <ion-textarea id="activityDescription"></ion-textarea>
+    <span class="error">{{ activityDescriptionError }}</span>
+    <h4>Categorie</h4>
+    <ion-row class="ion-justify-content-around">
+        <ion-button id="bewegen" (click)="categoryBtnPressed($event)" class="pinkBtn defaultBtn">Beweging</ion-button>
+        <ion-button id="rust" (click)="categoryBtnPressed($event)" class="blueBtn defaultBtn">Rust</ion-button>
+        <ion-button id="spel" (click)="categoryBtnPressed($event)" class="purpleBtn defaultBtn">Spel</ion-button>
+    </ion-row>
+    <span class="error">{{ categoryError }}</span>
+    <ion-row>
+      <ion-col size="8">
+        <h4>Wanneer</h4>
+      </ion-col>
+      <ion-col>
+        <h4>Duur</h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="customCol" size="8">
+        <ion-datetime [(ngModel)]="startDate" id="startDate" pickerFormat="DDDD H:mm" displayFormat="DDD H:mm" max="2030-12-31" placeholder="Datum"></ion-datetime>
+      </ion-col>
+      <ion-col class="customCol">
+        <ion-datetime [(ngModel)]="duration" id="duration" display-format="m" placeholder="Tijd" minuteValues="5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60"></ion-datetime>
+      </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="8">
+        <span class="error">{{ dateError }}</span>
+    </ion-col>
+    <ion-col>
+        <span class="error">{{ durationError }}</span>
+    </ion-col>
+  </ion-row>
+    <h4>Waar</h4>
+    <ion-input id="location"></ion-input>
+    <span class="error">{{ locationError }}</span>
+    <ion-row class="ion-justify-content-around submitRow">
+      <ion-button class="blueBtn submitBtn">Collega's uitnodigen</ion-button>
+      <ion-button class="purpleBtn submitBtn" (click)="createActivity()">Aanmaken</ion-button>
+    </ion-row>
+
+  </ion-card-content>
+</ion-card>
+</ion-content>

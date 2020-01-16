@@ -28,34 +28,34 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'activities-page',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../activities-page/activities-page.module').then(m => m.ActivitiesPagePageModule)
           }
         ]
       },
       {
-        path: 'maps',
+        path: '/my-profile',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../maps/maps.module').then(m => m.MapsPageModule)
+              import('../my-profile/my-profile.page').then(m => m.MyProfilePage)
           }
         ]
       },
       {
-        path: '',
+        path: '/tabs',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
       }
     ]
   },
   {
-    path: '',
+    path: '/tabs',
     redirectTo: '/tabs/tab1',
     pathMatch: 'full'
   }

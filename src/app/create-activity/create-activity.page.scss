@@ -1,0 +1,138 @@
+ion-input {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    --padding-top: 0px;
+    --padding-bottom: 0px;
+}
+
+.cardContent {
+    padding-top: 0px;
+    color: black;
+}
+
+.arrowBtn {
+    --background: transparent;
+    --padding-start: 0px;
+    --padding-end: 0px;
+    --background-activated: transparent;
+}
+
+.icon {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0%;
+}
+
+.arrowIcon {
+    color: white;
+    font-size: 32px;
+}
+
+.headerText {
+    color: black;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.invalid {
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
+}
+
+.error {
+    font-size: 11px;
+    color: red;
+}
+
+.submitRow {
+    margin-top: 25px;
+}
+
+.submitBtn {
+    font-size: 12px;
+    width: 40%;
+    border-radius: 11px;
+}
+
+ion-textarea {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    --padding-top: 0px;
+    --padding-bottom: 0px;
+}
+
+ion-item {
+    padding-left: 0px;
+}
+
+ion-col {
+    padding: 0px;
+}
+
+h4 {
+    padding-top: 10px;
+    padding-bottom: 7px;
+}
+
+.customCol {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    padding: 0px;
+    margin: 0px 0px;
+}
+
+.defaultBtn {
+    font-size: 11px;
+    width: 30%;
+    --color: white;
+    --color-activated:white;
+    --border-radius: 11px;
+}
+
+.pinkBtn {
+    --background: #BC0574;
+    --background-activated: #BC0574;
+    --color-activated: black;
+}
+
+.blueBtn {
+    --background: #698EA9;
+    --background-activated: #698EA9;
+    --background-hover: #698EA9;
+    --color-activated: black;
+}
+
+.purpleBtn {
+    --background: #32157C;
+    --background-activated: #32157C;
+    --background-hover: #32157C;
+    --color-activated: black;   
+}
+
+.pinkSelected {
+    color: black;
+    --background: #BC0574;
+    --border-style: none;
+}
+
+.blueSelected {
+    color: black;
+    --background: #698EA9;
+ 
+    --border-style: none;
+}
+
+.purpleSelected {
+    color: black;
+    --background: #32157C;
+
+    --border-style: none;
+}
+.createCard {
+    border-radius: 11px;
+}
