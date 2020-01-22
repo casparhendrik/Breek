@@ -35,12 +35,35 @@
   </ion-grid>
 </ion-header>
 
-<ion-content><ion-content id="daily-calendar">
+<ion-content id="daily-calendar">
   <ion-grid>
     <ion-row>
       <ion-col class="title" size="3">TIJD</ion-col>
       <ion-col class="title" size="8">ACTIVITEITEN</ion-col>
     </ion-row>
+    <!-- <div *ngFor="let event of eventList">
+      <ion-row *ngIf="event.timesBeforeEvent != null">
+        <ion-col class="rowcontainer" size="3">
+          <ion-row *ngFor="let time of event.timesBeforeEvent">
+            <ion-col class="time_stamp">{{ time }}:00</ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="8"></ion-col>
+      </ion-row>
+      <ion-row *ngIf="event.event != null">
+        <ion-col class="rowcontainer" size="3">
+          <ion-row *ngFor="let time of event.event.times">
+            <ion-col class="time_stamp">{{ time }}:00</ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="8">
+          <ion-card class="planning_item">
+            <ion-card-title>{{ event.event.event.time[0] }}:00 - {{ event.event.event.time[1] }}:00</ion-card-title>
+            <ion-card-subtitle>{{ event.event.event.eventName }}</ion-card-subtitle>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div> -->
     <ion-row>
       <ion-col class="rowcontainer" size="3">
         <ion-row><ion-col class="time_stamp">08:00</ion-col></ion-row>
