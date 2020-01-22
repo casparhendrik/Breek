@@ -11,8 +11,15 @@
 }
 
 .scrollview {
+    position: relative;
     overflow: auto;
     white-space: nowrap;
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .colleagueCardView {

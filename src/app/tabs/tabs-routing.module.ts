@@ -38,12 +38,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: '/my-profile',
+        path: 'my-profile',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../my-profile/my-profile.page').then(m => m.MyProfilePage)
+              import('../my-profile/my-profile.module').then(m => m.MyProfileModule)
           }
         ]
       },

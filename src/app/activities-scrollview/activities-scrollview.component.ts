@@ -73,7 +73,7 @@ export class ActivitiesScrollviewComponent implements OnInit, AfterViewInit, OnC
 
 
   cardPressed(event) {
-    const idTypes = ['card', 'ulLi', 'type', 'name', 'date', 'loca', 'desc'];
+    const idTypes = ['card', 'ulLi', 'type', 'name', 'date', 'loca', 'desc', 'colorBlock'];
     let id = '';
     for (const value of idTypes) {
       if (event.target.id.includes(value)) {

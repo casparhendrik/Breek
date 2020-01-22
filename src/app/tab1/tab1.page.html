@@ -41,7 +41,7 @@
         <ion-card *ngIf="userHasActivities" class="activityCard">
           <ul style="padding: 0;">
             <p id="{{currentUserActivities[0].id}}type" style="margin-bottom: 5px; margin-top: 10px; font-weight: 400">{{currentUserActivities[0].type}}</p>
-            <p id="{{currentUserActivities[0].id}}name" style="margin-top: 5px;">{{currentUserActivities[0].name}}</p>
+            <p id="{{currentUserActivities[0].id}}name" style="margin-top: 5px;">{{currentUserActivities[0].name.toUpperCase()}}</p>
             <p id="{{currentUserActivities[0].id}}date" style="margin-bottom: 5px;">{{currentUserActivities[0].startDate}} uur - {{currentUserActivities[0].durationInMinutes}} min</p>
             <p id="{{currentUserActivities[0].id}}loca" style="margin-top: 5px; margin-bottom: 10px; font-weight: 400">{{currentUserActivities[0].location}}</p>
           </ul> 

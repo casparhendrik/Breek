@@ -22,9 +22,9 @@
   </ion-row>
   <div *ngIf="!removeHeader" id="scrollViewHome" class="scrollView" style="width: 100%">
       <ion-card id="{{activity.id}}card" (click)="cardPressed($event)" class="activityCard {{ activity.type }}" *ngFor="let activity of filteredActivities">
-          <ul id="{{activity.id}}ulLi"  style="padding-left: 10px; width: 100%; float: left;">
-              <div id="{{ activity.title }}colorBlock" class="colorBlock"></div>
-            <p id="{{activity.id}}type" style="margin-bottom: 5px; margin-top: 10px; font-weight: 400">{{activity.type.toUpperCase()}}</p>
+          <ul id="{{activity.id}}ulLi"  style="padding-left: 10px; width: 100%; float: left; margin-top:0;">
+            <div id="{{ activity.id}}colorBlock" class="colorBlock {{ activity.name.toLowerCase().split(' ').join('') }}"></div>
+            <p id="{{activity.id}}type" style="margin-bottom: 5px; margin-top: 0px; font-weight: 400">{{activity.type.toUpperCase()}}</p>
             <p id="{{activity.id}}name" style="margin-top: 5px;">{{activity.name.toUpperCase()}}</p>
             <p id="{{activity.id}}date" style="margin-bottom: 5px;">{{activity.startDate}} uur - {{activity.durationInMinutes}} min</p>
             <p id="{{activity.id}}loca" style="margin-top: 5px; margin-bottom: 10px; font-weight: 400">{{activity.location}}</p>
@@ -32,17 +32,17 @@
          <ul id="{{activity.id}}desc" style="display: none; margin-left: 50%; padding-Left: 3%; white-space: normal;">
            <p id="{{activity.id}}">{{ activity.description }}</p>
            <div>
-              <ion-button *ngIf="!joined" id="{{activity.id}}join" class="createBtn">Meedoen</ion-button>
-              <ion-button *ngIf="joined" id="{{activity.id}}cancel" class="createBtn">Uitschrijven</ion-button>
+              <ion-button *ngIf="!joined" id="{{activity.id}}join" class="createBtn">MEEDOEN</ion-button>
+              <ion-button *ngIf="joined" id="{{activity.id}}cancel" class="createBtn">UITSCHRIJVEN</ion-button>
            </div>
          </ul>
       </ion-card>
   </div>
   <div *ngIf="removeHeader" id="scrollViewActivities" class="scrollView" style="width: 100%">
     <ion-card id="{{activity.id}}card" (click)="cardPressed($event)" class="activityCard {{ activity.type }}" *ngFor="let activity of allActivities">
-        <ul id="{{activity.id}}ulLi"  style="padding-left: 10px; width: 100%; float: left;">
-            <div id="{{ activity.title }}colorBlock" class="colorBlock"></div>
-          <p id="{{activity.id}}type" style="margin-bottom: 5px; margin-top: 10px; font-weight: 400">{{activity.type.toUpperCase()}}</p>
+        <ul id="{{activity.id}}ulLi"  style="padding-left: 10px; width: 100%; float: left; margin-top: 0px;">
+          <div id="{{ activity.id}}colorBlock" class="colorBlock {{ activity.name.toLowerCase().split(' ').join('') }}"></div>
+          <p id="{{activity.id}}type" style="margin-bottom: 5px; margin-top: 0px; font-weight: 400">{{activity.type.toUpperCase()}}</p>
           <p id="{{activity.id}}name" style="margin-top: 5px;">{{activity.name.toUpperCase()}}</p>
           <p id="{{activity.id}}date" style="margin-bottom: 5px;">{{activity.startDate}} uur - {{activity.durationInMinutes}} min</p>
           <p id="{{activity.id}}loca" style="margin-top: 5px; margin-bottom: 10px; font-weight: 400">{{activity.location}}</p>
@@ -50,8 +50,8 @@
        <ul id="{{activity.id}}desc" style="display: none; margin-left: 50%; padding-Left: 3%; white-space: normal;">
          <p id="{{activity.id}}">{{ activity.description }}</p>
          <div>
-            <ion-button *ngIf="!joined" id="{{activity.id}}join" class="createBtn">Meedoen</ion-button>
-            <ion-button *ngIf="joined" id="{{activity.id}}cancel" class="createBtn">Uitschrijven</ion-button>
+            <ion-button *ngIf="!joined" id="{{activity.id}}join" class="createBtn">MEEDOEN</ion-button>
+            <ion-button *ngIf="joined" id="{{activity.id}}cancel" class="createBtn">UITSCHRIJVEN</ion-button>
          </div>
        </ul>
     </ion-card>

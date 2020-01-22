@@ -26,7 +26,6 @@
 
 .activityCard {
     width: 40%;
-    height: 80%;
     padding: 0px;
     margin: 20px;
     margin-right: 0%;
@@ -102,10 +101,55 @@
 
 .colorBlock {
     display: inline-block;
-    height: 20px;
-    width: 20px;
+    height: 70px;
+    width: 70px;
     margin-left: 0;
     margin-bottom: 0%;
     border-radius: 11px;
     overflow: auto;
+}
+
+.darten {
+    background-image: url("../../assets/icons/Darten.png");
+    background-size: 120% 120%;
+}
+
+.frisbee {
+    background-image: url("../../assets/icons/Frisbee.png");
+    background-size: 100% 110%;
+}
+
+.Koffieofthee {
+    background-image: url("../../assets/icons/Koffie of thee.png");
+    background-size: 100% 110%;
+}
+
+.pingpong {
+    background-image: url("../../assets/icons/Pingpong.png");
+    background-size: 100% 110%;
+}
+
+.praatkaarten {
+    background-image: url("../../assets/icons/praatkaarten.png");
+    background-size: 100% 110%;
+}
+
+.tekenen {
+    background-image: url("../../assets/icons/Tekenen.png");
+    background-size: 100% 110%;
+}
+
+.wandelen {
+    background-image: url("../../assets/icons/Wandelen.png");
+    background-size: 100% 110%;
+}
+
+.yoga {
+    background-image: url("../../assets/icons/Yoga.png");
+    background-size: 100% 110%;
+}
+
+.potjekaarten {
+    background-image: url("../../assets/icons/Potje kaarten.png");
+    background-size: 100% 100%;
 }

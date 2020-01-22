@@ -68,6 +68,7 @@ export class ActivitiesPagePage implements OnInit, AfterViewInit {
       (document.getElementById(event.target.id + 'div') as HTMLDivElement).style.display = 'block';
       (document.getElementById(event.target.id) as HTMLIonIconElement).name = 'remove-circle-outline';
       this.currentId = event.target.id;
+      console.log(this.currentId);
       this.currentTitle = event.target.id;
       this.currentDescription = (document.getElementById(event.target.id + 'desc') as HTMLParagraphElement).innerHTML;
       this.currentLocation = (document.getElementById(event.target.id + 'input') as HTMLIonInputElement).value;
@@ -97,11 +98,12 @@ export class ActivitiesPagePage implements OnInit, AfterViewInit {
         location: (document.getElementById(this.currentId + 'location') as HTMLInputElement).value
       };
       this.db.createActivity(newActivity);
+      this.closeCard(this.lastSelected);
     }
-    this.closeCard(this.lastSelected);
   }
 
   validateData() {
+    console.log((document.getElementById(this.currentId + 'location') as HTMLInputElement).value);
     if ((document.getElementById(this.currentId + 'location') as HTMLInputElement).value === '') {
       this.locationError = 'Geef een locatie van de activiteit';
     } else {
