@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FirestoreService, Activity } from 'src/datastorage/firestore.service';
+import { Calendar } from '@ionic-native/calendar/ngx';
 
 export interface ExampleActivity {
   title: string;
@@ -32,12 +33,12 @@ export class ActivitiesPagePage implements OnInit, AfterViewInit {
   currentLocation: string;
   currentId: string;
   currentType: string;
-  startDate = '';
+  startDate: Date;
   duration = '';
   type = '';
   lastSelected = '';
 
-  constructor(private db: FirestoreService) {
+  constructor(private db: FirestoreService, private calendar: Calendar) {
     for (const exampleActivity of this.exampleActivities) {
      const newActivity: ExampleActivity = {
         title: exampleActivity[0],
@@ -91,11 +92,12 @@ export class ActivitiesPagePage implements OnInit, AfterViewInit {
         name: this.currentTitle,
         description: this.currentDescription,
         type: this.currentType,
-        startDate: this.startDate,
+        startDate: this.startDate.toDateString(),
         durationInMinutes: duration,
         participants: [],
         location: (document.getElementById(this.currentId + 'location') as HTMLInputElement).value
       };
+      this.calendar.createEventInteractively(this.currentTitle, (document.getElementById(this.currentId + 'location') as HTMLInputElement).value, '', this.startDate, new Date(this.startDate.getDate() + new Date(this.duration).getMinutes()))
       this.db.createActivity(newActivity);
     }
     this.closeCard(this.lastSelected);
