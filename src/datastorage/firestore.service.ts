@@ -93,6 +93,16 @@ export class FirestoreService {
         return this.activities;
     }
 
+    getActivity(id: string): Observable<Activity> {
+        const ref = this.db.collection('activities').doc<Activity>(id);
+        const activity = ref.valueChanges().pipe(
+            map (activity => {
+                activity.id = id;
+                return activity;
+            }));
+        return activity;
+    }
+
     getMysteryActivity(id: string): Observable<Activity> {
         const ref = this.db.collection('mysteryactivities').doc<Activity>(id);
         const mysteryactivity = ref.valueChanges().pipe(
@@ -144,7 +154,6 @@ export class FirestoreService {
     }
 
     updateActivity(activity: Activity) {
-        console.log(activity.id);
         const ref = this.db.collection('activities').doc(activity.id).update({participants: activity.participants});
     }
 

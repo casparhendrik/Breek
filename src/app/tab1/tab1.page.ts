@@ -120,6 +120,7 @@ export class Tab1Page implements OnInit, AfterViewInit {
 
   getActivitys() {
     const currentUser = localStorage.getItem('currentUserId');
+    console.log(currentUser);
     this.db.getAllActivities().subscribe(activities => {
       activities.forEach(activity => {
         activity.participants.forEach(participant => {

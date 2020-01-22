@@ -15,7 +15,10 @@ export class ActivitiesScrollviewComponent implements OnInit, AfterViewInit, OnC
   selectedActivity = '';
   lastSelectedActivity = '';
   selectedTime = 'timeBtnOne';
+  selectedCategory = 'all';
   filteredActivities: Activity[] = [];
+
+  allActivities: Activity[] = [];
 
   startDates: Date[] = [];
   removeHeader = false;
@@ -31,6 +34,7 @@ export class ActivitiesScrollviewComponent implements OnInit, AfterViewInit, OnC
       this.removeHeader = true;
     }
   }
+
   @Input() currentDate: any;
   ngOnChanges(currentDate: any) {
     this.setupActivities();
@@ -39,9 +43,9 @@ export class ActivitiesScrollviewComponent implements OnInit, AfterViewInit, OnC
   ngOnInit() {
   }
 
-ngAfterViewInit() {
-  this.setupActivities();
-}
+  ngAfterViewInit() {
+    this.setupActivities();
+  }
 
   getUrl() {
     const path = window.location.pathname;
@@ -50,10 +54,23 @@ ngAfterViewInit() {
 
   timeBtnPressed(event) {
     (document.getElementById(this.selectedTime) as HTMLButtonElement).classList.remove('isSelected');
-    const id = event.target.id;
-    this.selectedTime = id;
-    (document.getElementById(id) as HTMLButtonElement).classList.add('isSelected');
+    this.selectedTime = event.target.id;
+    (document.getElementById(event.target.id) as HTMLButtonElement).classList.add('isSelected');
+    const activities = Array.from(document.getElementById('scrollViewHome').children);
+    const query = event.target.innerHTML;
+    requestAnimationFrame(() => {
+      activities.forEach(item => {
+        let shouldShow;
+        if (query === 'Overig') {
+          shouldShow = true;
+        } else {
+          shouldShow = item.children.item(0).children.item(3).innerHTML >= query;
+        }
+        (item as HTMLElement).style.display = shouldShow ? 'inline-block' : 'none';
+      });
+    });
   }
+
 
   cardPressed(event) {
     const idTypes = ['card', 'ulLi', 'type', 'name', 'date', 'loca', 'desc'];
@@ -63,19 +80,32 @@ ngAfterViewInit() {
         id = event.target.id.replace(value, '');
       }
     }
-    this.checkIfJoined(id);
     if (event.target.id.includes('join')) {
       this.joinActivity(event.target.id);
-      event = event.target.id.replace('join', 'card');
-      this.cardOpened = false;
+    } else if (event.target.id.includes('cancel')) {
+      this.cancelActivity(event.target.id);
     } else {
-      if (this.cardOpened) {
-        this.removeDescriptionToCard(event, id);
-        this.cardOpened = false;
-      } else {
-        window.setTimeout(this.addDescriptionToCard, 150, event, id);
-        this.cardOpened = true;
-      }
+      this.transitionCard(id);
+    }
+  }
+
+  transitionCard(id: string) {
+    if (this.lastSelectedActivity === '') {
+      this.checkIfJoined(id);
+      document.getElementById(id + 'card').classList.add('openedCard');
+      window.setTimeout(this.addDescriptionToCard, 150, id);
+      this.lastSelectedActivity = id;
+    } else if (this.lastSelectedActivity === id) {
+      document.getElementById(id + 'card').classList.remove('openedCard');
+      this.removeDescriptionToCard(id);
+      this.lastSelectedActivity = '';
+    } else if (this.lastSelectedActivity !== '') {
+      this.removeDescriptionToCard(this.lastSelectedActivity);
+      document.getElementById(this.lastSelectedActivity + 'card').classList.remove('openedCard');
+      this.checkIfJoined(id);
+      document.getElementById(id + 'card').classList.add('openedCard');
+      window.setTimeout(this.addDescriptionToCard, 150, id);
+      this.lastSelectedActivity = id;
     }
   }
 
@@ -91,7 +121,22 @@ ngAfterViewInit() {
     this.db.updateActivity(act);
   }
 
-  addDescriptionToCard(event, id) {
+  cancelActivity(id: string) {
+    let act: Activity;
+    id = id.replace('cancel', '');
+    this.filteredActivities.forEach(activity => {
+      if (activity.id === id) {
+        const index = activity.participants.indexOf(this.currentUser);
+        if (index > -1) {
+          activity.participants.splice(index, 1);
+          act = activity;
+        }
+      }
+    });
+    this.db.updateActivity(act);
+  }
+
+  addDescriptionToCard(id) {
     const cardContent = document.getElementById(id + 'ulLi');
     const description = document.getElementById(id + 'desc');
     cardContent.style.width = '50%';
@@ -99,7 +144,7 @@ ngAfterViewInit() {
     description.style.display = 'block';
   }
 
-  removeDescriptionToCard(event, id) {
+  removeDescriptionToCard(id) {
     const cardContent = document.getElementById(id + 'ulLi');
     const description = document.getElementById(id + 'desc');
     cardContent.style.width = '100%';
@@ -112,15 +157,11 @@ createBtnPressed() {
   }
 
 setupActivities() {
-  if (this.getUrl() === '/tabs/tabs/activities-page') {
-    this.getAllActivities();
-  } else {
-    this.getActivitiesByDate();
-  }
+  this.getAllActivities();
 }
 
 handleInput(event) {
-    const items = Array.from(document.getElementById('scrollView').children);
+    const items = Array.from(document.getElementById('scrollViewActivities').children);
     const query = event.target.value.toLowerCase();
     requestAnimationFrame(() => {
       items.forEach(item => {
@@ -154,26 +195,62 @@ handleInput(event) {
 
   private getAllActivities() {
     this.db.getAllActivities().subscribe(activities => {
-      this.filteredActivities = [];
-      activities.forEach(activity => {
-        this.filteredActivities.push(activity);
-        const currentTime = new Date(activity.startDate);
-        activity.startDate = currentTime.getHours() + ':' + currentTime.getMinutes();
-      });
+      if (this.getUrl() === '/tabs/tabs/activities-page') {
+        this.filteredActivities = [];
+        activities.forEach(activity => {
+          this.allActivities.push(activity);
+          const currentTime = new Date(activity.startDate);
+          activity.startDate = currentTime.getHours() + ':' + currentTime.getMinutes();
+        });
+      } else {
+        this.filteredActivities = [];
+        activities.forEach(activity => {
+          if (new Date(activity.startDate).getDate() === Number(this.currentDate)) {
+            this.filteredActivities.push(activity);
+            const currentTime = new Date(activity.startDate);
+            activity.startDate = currentTime.getHours() + ':' + currentTime.getMinutes();
+          }
+        });
+      }
     });
   }
 
  checkIfJoined(id: string) {
-   this.filteredActivities.forEach(activity => {
-     if (activity.id === id) {
-       activity.participants.forEach(participant => {
-         if (participant === this.currentUser) {
-           this.joined = true;
-         } else {
-           this.joined = false;
-         }
-       });
-     }
-   });
+    const currentUser = localStorage.getItem('currentUserId');
+    this.db.getActivity(id).subscribe(activity => {
+      if (activity.participants.length === 0) {
+        this.joined = false;
+      }
+      activity.participants.forEach(participant => {
+        if (participant === currentUser) {
+          this.joined = true;
+        } else {
+          this.joined = false;
+        }
+      });
+    });
+  }
+
+  changeCategory(event) {
+    document.getElementById(this.selectedCategory).classList.remove('isSelected');
+    this.selectedCategory = event.target.id;
+    document.getElementById(event.target.id).classList.add('isSelected');
+    const activities = Array.from(document.getElementById('scrollViewActivities').children);
+    const query = event.target.id;
+    if (query === 'all') {
+      requestAnimationFrame(() => {
+        activities.forEach(item => {
+          const shouldShow = true;
+          (item as HTMLElement).style.display = shouldShow ? 'inline-block' : 'none';
+        });
+      });
+    } else {
+      requestAnimationFrame(() => {
+        activities.forEach(item => {
+          const shouldShow = item.children.item(0).children.item(1).innerHTML === query;
+          (item as HTMLElement).style.display = shouldShow ? 'inline-block' : 'none';
+        });
+      });
+    }
   }
 }

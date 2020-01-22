@@ -26,7 +26,7 @@ export class ActivitiesPagePage implements OnInit, AfterViewInit {
     ['Frisbee', 'Doe mee met een potje frisbee! Je bent lekker buiten en je doet iets actiefs.', 'BEWEGEN']
   ];
 
-  locationError: string;
+  locationError = '';
   currentTitle: string;
   currentDescription: string;
   currentLocation: string;
@@ -85,9 +85,8 @@ export class ActivitiesPagePage implements OnInit, AfterViewInit {
 
   createActivity() {
     this.validateData();
-    if (this.locationError !== '') {
+    if (this.locationError === '') {
       const duration = new Date(this.duration).getMinutes().toString();
-      console.log(duration);
       const newActivity: Activity = {
         name: this.currentTitle,
         description: this.currentDescription,
@@ -99,11 +98,14 @@ export class ActivitiesPagePage implements OnInit, AfterViewInit {
       };
       this.db.createActivity(newActivity);
     }
+    this.closeCard(this.lastSelected);
   }
 
   validateData() {
     if ((document.getElementById(this.currentId + 'location') as HTMLInputElement).value === '') {
       this.locationError = 'Geef een locatie van de activiteit';
+    } else {
+      this.locationError = '';
     }
   }
 

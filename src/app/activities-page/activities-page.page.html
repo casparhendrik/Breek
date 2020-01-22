@@ -10,7 +10,7 @@
     <ion-card-header style="padding-bottom: 0px; padding-top: 5%;">
       <div style="width: 100%">
         <ion-icon id="{{ activity.title }}" (click)="onIcon($event)" class="titleRow icon" style="padding: 0%;" name="add-circle-outline"></ion-icon>
-        <label style="margin-left: 4%" class="titleRow">{{activity.title}}</label>
+        <label style="margin-left: 4%" class="titleRow">{{activity.title.toUpperCase()}}</label>
       </div>
     </ion-card-header>
     <ion-card-content class="exampleCardContent">
@@ -30,7 +30,7 @@
                 <ion-datetime [(ngModel)]="startDate" id="startDate" picker-format="DDDD H:mm" display-format="DDDD H:mm" max="2030-12-31" placeholder="Datum"></ion-datetime>
               </ion-col>
               <ion-col class="customCol">
-                <ion-datetime [(ngModel)]="duration" id="duration" display-format="mm" placeholder="Tijd"></ion-datetime>
+                <ion-datetime [(ngModel)]="duration" id="duration" display-format="mm" placeholder="Tijd" minuteValues="5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60"></ion-datetime>
               </ion-col>
           </ion-row>
           <ion-row>
@@ -41,6 +41,7 @@
                 <span class="error">{{ durationError }}</span>
             </ion-col>
           </ion-row>
+          <h4>Waar</h4>
           <ion-input id="{{activity.title}}location" id="location"></ion-input>
           <span id="{{activity.title}}input" class="error">{{ locationError }}</span>
           <ion-row id="{{ activity.title }}div" class="ion-justify-content-around submitRow" style="margin-top: 5%;">
