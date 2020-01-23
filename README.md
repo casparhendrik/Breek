@@ -1,7 +1,8 @@
 # Breek
 
-Breek is a mobile application made for teachers. They can create/join activities and link these to their personal agenda. 
-In this picture you can see how it works.
+Breek is a mobile application made for teachers. They can create or join activities and link these to their personal agendas.
+The application should, in this way, motivate teachers to take midday breaks. According to our research, taking lunch breaks reduces the chances of experiencing redundant and therefore dangerous amounts of stress.
+The picture below shows an impression of what the app should look like.
 
 ![Application screens](/src/assets/Mockup_phone.png)
 
